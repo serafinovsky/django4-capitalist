@@ -1,0 +1,7 @@
+__pycache__/
+.idea/
+/build/
+/dist/
+*.sqlite3
+local_settings.py
+*.egg-info/
