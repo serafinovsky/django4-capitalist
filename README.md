@@ -9,6 +9,11 @@ Feel free to ask for additional methods. I'll look into it.
 `import_batch_advanced` DOES NOT support certificates with passphrase.
 
 
+INSTALL
+-------
+`pip install python-capitalist`
+
+
 LICENSE
 -------
 
