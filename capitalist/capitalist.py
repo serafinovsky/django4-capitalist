@@ -87,3 +87,11 @@ class Capitalist:
         if wiretag:
             data['wiretag'] = wiretag
         return self.secure_request('get_document_fee', data)
+
+    def get_batch_info(self, batch_id, page_size=1, start_offset=0):
+        data = {
+            'batch_id': batch_id,
+            'page_size': page_size,
+            'start_offset': start_offset,
+        }
+        return self.secure_request('get_batch_info', data)
