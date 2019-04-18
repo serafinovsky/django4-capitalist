@@ -119,6 +119,11 @@ class CardRussianPayment(BasePayment):
         return [arg for arg in args if arg is not None]
 
 
+class CardUkrainianPayment(CardRussianPayment):
+    def get_codename(self):
+        return 'UKRCARD'
+
+
 class CardWorldwidePayment(BasePayment):
     __slots__ = [
         'card_number', 'amount', 'currency', 'internal_id', 'destination', 'card_first_name', 'card_last_name',
