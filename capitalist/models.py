@@ -154,3 +154,39 @@ class CardWorldwidePayment(BasePayment):
             self.card_number, self.amount, self.currency, self.internal_id, self.destination, self.card_first_name,
             self.card_last_name, self.birthday_date, self.address, self.country_alpha2, self.city,
             self.card_expiration_month, self.card_expiration_year)
+
+
+class YandexMoneyPayment(BasePayment):
+    __slots__ = ['number', 'amount', 'currency', 'internal_id', 'destination']
+
+    def __init__(self, number, amount, currency, internal_id, destination):
+        self.number = number
+        self.amount = amount
+        self.currency = currency
+        self.internal_id = internal_id
+        self.destination = destination
+
+    def get_codename(self):
+        return 'YANDEX'
+
+    def get_payment_args(self):
+        args = [self.number, self.amount, self.currency, self.internal_id, self.destination]
+        return [arg for arg in args if arg is not None]
+
+
+class QiwiPayment(BasePayment):
+    __slots__ = ['number', 'amount', 'currency', 'internal_id', 'destination']
+
+    def __init__(self, number, amount, currency, internal_id, destination):
+        self.number = number
+        self.amount = amount
+        self.currency = currency
+        self.internal_id = internal_id
+        self.destination = destination
+
+    def get_codename(self):
+        return 'QIWI'
+
+    def get_payment_args(self):
+        args = [self.number, self.amount, self.currency, self.internal_id, self.destination]
+        return [arg for arg in args if arg is not None]
