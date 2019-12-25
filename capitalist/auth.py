@@ -5,7 +5,7 @@ from cryptography.hazmat.primitives import serialization, hashes
 from cryptography.hazmat.primitives.asymmetric import padding
 from cryptography.hazmat.primitives.asymmetric.rsa import RSAPublicNumbers
 
-from .exceptions import RequestException
+from .exceptions import RequestException, ResponseException
 from .utils import retry
 
 
@@ -17,13 +17,16 @@ class Authenticator:
         self._encrypted_password = None
         self._token = None
 
-    @retry((RequestException,))
+    @retry((RequestException, ResponseException))
     def _get_token(self):
         data = {
             'operation': 'get_token',
             'login': self.login,
         }
         json_data = self.request_executor.request(data=data)
+        code = json_data['code']
+        if code != 0:
+            raise ResponseException(code, json_data['message'])
         return json_data
 
     def setup(self):
