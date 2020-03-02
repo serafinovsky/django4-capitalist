@@ -190,3 +190,75 @@ class QiwiPayment(BasePayment):
     def get_payment_args(self):
         args = [self.number, self.amount, self.currency, self.internal_id, self.destination]
         return [arg for arg in args if arg is not None]
+
+
+class MegaFonPayment(BasePayment):
+    __slots__ = ['number', 'amount', 'currency', 'internal_id', 'destination']
+
+    def __init__(self, number, amount, currency, internal_id, destination):
+        self.number = number
+        self.amount = amount
+        self.currency = currency
+        self.internal_id = internal_id
+        self.destination = destination
+
+    def get_codename(self):
+        return 'MEGAFON'
+
+    def get_payment_args(self):
+        args = [self.number, self.amount, self.currency, self.internal_id, self.destination]
+        return [arg for arg in args if arg is not None]
+
+
+class BeelinePayment(BasePayment):
+    __slots__ = ['number', 'amount', 'currency', 'internal_id', 'destination']
+
+    def __init__(self, number, amount, currency, internal_id, destination):
+        self.number = number
+        self.amount = amount
+        self.currency = currency
+        self.internal_id = internal_id
+        self.destination = destination
+
+    def get_codename(self):
+        return 'BEELINE'
+
+    def get_payment_args(self):
+        args = [self.number, self.amount, self.currency, self.internal_id, self.destination]
+        return [arg for arg in args if arg is not None]
+
+
+class MtsPayment(BasePayment):
+    __slots__ = ['number', 'amount', 'currency', 'internal_id', 'destination']
+
+    def __init__(self, number, amount, currency, internal_id, destination):
+        self.number = number
+        self.amount = amount
+        self.currency = currency
+        self.internal_id = internal_id
+        self.destination = destination
+
+    def get_codename(self):
+        return 'MTS'
+
+    def get_payment_args(self):
+        args = [self.number, self.amount, self.currency, self.internal_id, self.destination]
+        return [arg for arg in args if arg is not None]
+
+
+class Tele2Payment(BasePayment):
+    __slots__ = ['number', 'amount', 'currency', 'internal_id', 'destination']
+
+    def __init__(self, number, amount, currency, internal_id, destination):
+        self.number = number
+        self.amount = amount
+        self.currency = currency
+        self.internal_id = internal_id
+        self.destination = destination
+
+    def get_codename(self):
+        return 'TELE2'
+
+    def get_payment_args(self):
+        args = [self.number, self.amount, self.currency, self.internal_id, self.destination]
+        return [arg for arg in args if arg is not None]
