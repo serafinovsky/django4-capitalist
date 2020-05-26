@@ -119,6 +119,7 @@ class CardRussianPayment(BasePayment):
         return [arg for arg in args if arg is not None]
 
 
+# Deprecated
 class CardUkrainianPayment(CardRussianPayment):
     def get_codename(self):
         return 'UKRCARD'
@@ -154,6 +155,11 @@ class CardWorldwidePayment(BasePayment):
             self.card_number, self.amount, self.currency, self.internal_id, self.destination, self.card_first_name,
             self.card_last_name, self.birthday_date, self.address, self.country_alpha2, self.city,
             self.card_expiration_month, self.card_expiration_year)
+
+
+class CardCISPayment(CardWorldwidePayment):
+    def get_codename(self):
+        return 'SNGCARD'
 
 
 class YandexMoneyPayment(BasePayment):
