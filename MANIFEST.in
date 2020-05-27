@@ -1,0 +1,7 @@
+include INSTALL
+include LICENSE.md
+include MANIFEST.in
+include README.md
+recursive-include *.py
+recursive-include capitalist/contrib/django/django_capitalist/locale *
+global-exclude __pycache__ *.pyc
