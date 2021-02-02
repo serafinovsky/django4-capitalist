@@ -5,3 +5,4 @@ __pycache__/
 *.sqlite3
 local_settings.py
 *.egg-info/
+.python-version

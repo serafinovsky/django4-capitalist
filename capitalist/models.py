@@ -102,6 +102,27 @@ class WebMoneyPayment(BasePayment):
 
 
 class CardRussianPayment(BasePayment):
+    __slots__ = ['card_number', 'amount', 'currency', 'internal_id', 'destination', 'first_name', 'last_name']
+
+    def __init__(self, card_number, amount, currency, internal_id, destination, first_name, last_name):
+        self.card_number = card_number
+        self.amount = amount
+        self.currency = currency
+        self.internal_id = internal_id
+        self.destination = destination
+        self.first_name = first_name
+        self.last_name = last_name
+
+    def get_codename(self):
+        return 'RUCARD'
+
+    def get_payment_args(self):
+        args = [self.card_number, self.amount, self.currency, self.internal_id, self.destination, self.first_name,
+                self.last_name]
+        return [arg for arg in args if arg is not None]
+
+
+class CardUkrainianPayment(BasePayment):
     __slots__ = ['card_number', 'amount', 'currency', 'internal_id', 'destination']
 
     def __init__(self, card_number, amount, currency, internal_id, destination):
@@ -112,17 +133,11 @@ class CardRussianPayment(BasePayment):
         self.destination = destination
 
     def get_codename(self):
-        return 'RUCARD'
+        return 'UKRCARD'
 
     def get_payment_args(self):
         args = [self.card_number, self.amount, self.currency, self.internal_id, self.destination]
         return [arg for arg in args if arg is not None]
-
-
-# Deprecated
-class CardUkrainianPayment(CardRussianPayment):
-    def get_codename(self):
-        return 'UKRCARD'
 
 
 class CardWorldwidePayment(BasePayment):
